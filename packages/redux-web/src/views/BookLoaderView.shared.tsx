@@ -1,16 +1,16 @@
 import React from "react";
 import { PropsWithChildren } from "react";
-import { useGetPokemonByNameQuery } from "../apis/books.api";
+import { useGetBookByIdQuery } from "../apis/books.api";
 
 type ILoaderView = {
-  name: string;
+  id: string;
 };
 
-export const LoaderView = ({
-  name,
+export const BookLoaderView = ({
+  id,
   children,
 }: PropsWithChildren<ILoaderView>) => {
-  const { data, error, isLoading } = useGetPokemonByNameQuery(name);
+  const { data, error, isLoading } = useGetBookByIdQuery(id);
   return (
     <section className="p8-4">
       {isLoading && <h1 className="title">Cargando</h1>}
@@ -19,7 +19,7 @@ export const LoaderView = ({
 
       {data &&
         React.cloneElement(children as JSX.Element, {
-          name: name,
+          id: id,
           payload: data,
         })}
     </section>

@@ -1,6 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import { useLayoutEffect } from "react";
 import "./App.css";
+import { BookDetail } from "./components/BookDetail";
 import { PokemonDetail } from "./components/PokemonDetail";
 import { StatusBanner } from "./components/StatusBanner";
 import { changeStatusAsync, isBusy } from "./store/slices/status.slice";
@@ -24,6 +25,9 @@ function App() {
       <StatusBanner />
       <AnimatePresence initial={true}>
         <PokemonDetail name="bulbasaur" />
+      </AnimatePresence>
+      <AnimatePresence initial={true}>
+        <BookDetail id="2336f6a0-a1c4-11ed-af92-5dad79a1fd7d" />
       </AnimatePresence>
       <a
         href="https://codesandbox.io/s/github/reduxjs/redux-essentials-counter-example"
