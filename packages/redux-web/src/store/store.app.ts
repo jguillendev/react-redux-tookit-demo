@@ -5,10 +5,12 @@ import { pokemonApi } from "../apis/pokemon.api";
 import { booksApi } from "../apis/books.api";
 import statusReducer from "./slices/status.slice";
 import booksReducer from "./slices/books.slice";
+import pokemonReducer from "./slices/pokemon.slice";
 
 export const appStore = configureStore({
   reducer: {
     busy: statusReducer,
+    pokemon: pokemonReducer,
     books: booksReducer,
     [pokemonApi.reducerPath]: pokemonApi.reducer,
     [booksApi.reducerPath]: booksApi.reducer,
