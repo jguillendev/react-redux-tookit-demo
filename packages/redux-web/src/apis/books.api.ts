@@ -3,10 +3,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { booksAdapter } from "../store/adapters/book.adapters";
 import { Book } from "../store/interfaces/book.interfaces";
 
-interface BookNames {
+export type PatchEntityPayload = {
   id: string;
-  name: string;
-}
+  changes: any;
+};
 
 export const booksApi = createApi({
   reducerPath: "books-api",
@@ -35,7 +35,7 @@ export const booksApi = createApi({
         method: "get",
       }),
     }),
-    addNewBook: builder.mutation({
+    addNewBook: builder.mutation<Book, Partial<Book>>({
       invalidatesTags: ["GetBooks"],
       query: (book) => ({
         url: "create/",
@@ -52,12 +52,12 @@ export const booksApi = createApi({
         body: book,
       }),
     }),
-    patchBook: builder.mutation({
+    patchBook: builder.mutation<Book, Partial<PatchEntityPayload>>({
       invalidatesTags: ["GetBooks"],
-      query: (book) => ({
-        url: `/patch/${book.id}`,
+      query: (data) => ({
+        url: `/patch/${data.id}`,
         method: "PATCH",
-        body: book,
+        body: data.changes,
       }),
     }),
     deleteBook: builder.mutation({
