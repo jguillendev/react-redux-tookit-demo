@@ -7,6 +7,7 @@ import { StatusBanner } from "./components/StatusBanner";
 import { changeStatusAsync, isBusy } from "./store/slices/status.slice";
 import { StatusTypes } from "./store/states/status.state";
 import { useAppDispatch, useAppSelector } from "./store/store.hooks";
+import { BooksList } from "./views/BookListView";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -35,6 +36,7 @@ function App() {
       >
         Counter Example
       </a>
+      <BooksList />
     </div>
   );
 }

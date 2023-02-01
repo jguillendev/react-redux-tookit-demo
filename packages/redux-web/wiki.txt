@@ -1,0 +1,8 @@
+RTK QUERY :: BASIC :: DOCS
+https://redux.js.org/tutorials/essentials/part-7-rtk-query-basics
+
+RTK QUER :: ADVANCED :: DOCS
+https://redux.js.org/tutorials/essentials/part-8-rtk-query-advanced
+
+RTK QUERY :: CREATE API :: FULL Example
+https://codesandbox.io/s/github/reduxjs/redux-essentials-example-app/tree/checkpoint-5-createApi

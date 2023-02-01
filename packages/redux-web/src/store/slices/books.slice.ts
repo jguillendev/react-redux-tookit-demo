@@ -7,7 +7,12 @@ const booksSlice = createSlice({
   initialState: booksAdapter.getInitialState(),
   reducers: {
     bookAdded: booksAdapter.addOne,
+    remove: booksAdapter.removeOne,
     booksReceived(state, action: PayloadAction<{ books: Array<Book> }>) {
+      console.log(
+        "booksSlice:reducers:booksReceived:books: ",
+        action.payload.books
+      );
       booksAdapter.setAll(state, action.payload.books);
     },
   },
@@ -15,4 +20,4 @@ const booksSlice = createSlice({
 
 export default booksSlice.reducer;
 // Action creators are generated for each case reducer function
-export const { bookAdded, booksReceived } = booksSlice.actions;
+export const { bookAdded, booksReceived, remove } = booksSlice.actions;
