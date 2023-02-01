@@ -9,15 +9,18 @@ import pokemonReducer from "./slices/pokemon.slice";
 
 export const appStore = configureStore({
   reducer: {
+    // agregando reducers de Slices
     busy: statusReducer,
     pokemon: pokemonReducer,
     books: booksReducer,
+    // agregando reducers de Apis
     [pokemonApi.reducerPath]: pokemonApi.reducer,
     [booksApi.reducerPath]: booksApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(logger)
+      // agregando middlewares de apis
       .concat(pokemonApi.middleware)
       .concat(booksApi.middleware),
 });

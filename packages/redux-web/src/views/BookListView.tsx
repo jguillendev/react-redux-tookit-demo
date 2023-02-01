@@ -2,16 +2,19 @@ import { useMemo } from "react";
 import { booksApi, useGetBooksQuery } from "../apis/books.api";
 import {
   selectAllBooks,
-  selectAuthorBooks,
   selectTotalBooks,
 } from "../store/adapters/book.adapters";
 import { Book } from "../store/interfaces/book.interfaces";
+import { selectAuthorBooks } from "../store/selectors/books.selectors";
 import { useAppDispatch, useAppSelector } from "../store/store.hooks";
 
 export function BooksList() {
   const dispatch = useAppDispatch();
+  // total de books en el store
   const count = useAppSelector(selectTotalBooks);
-  //const books = useAppSelector(selectAllBooks);
+  // todos los books en el store
+  const allBooks = useAppSelector(selectAllBooks);
+
   const {
     data: items,
     isError,

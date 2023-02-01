@@ -22,6 +22,9 @@ export const booksApi = createApi({
       query: (option?: string) => `books/`,
       transformResponse: (response: Array<Book>, meta, arg) => {
         const initialState = booksAdapter.getInitialState();
+        // podemos guardar datos en un store
+        // utilizando los metodos de algun adapter
+
         booksAdapter.setAll(initialState, response);
         return response;
       },

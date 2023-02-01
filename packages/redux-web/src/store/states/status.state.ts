@@ -5,8 +5,8 @@ export enum StatusTypes {
 }
 
 export type SliceState =
-  | { status: StatusTypes; message: string }
-  | { status: StatusTypes; value: string }
-  | { status: StatusTypes };
+  | { id: string; status: StatusTypes; message: string }
+  | { id: string; status: StatusTypes; value: string }
+  | { id: string; status: StatusTypes };
 
 export const initialState = { status: StatusTypes.loading } as SliceState;

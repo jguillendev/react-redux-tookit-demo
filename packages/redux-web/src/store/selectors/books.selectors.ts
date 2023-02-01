@@ -1,7 +1,9 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { selectAllPokemons } from "../adapters/pokemon.adapters";
-import { selectAllBooks } from "../adapters/book.adapters";
+import { selectAllBooks, booksAdapter } from "../adapters/book.adapters";
 
+// creando un custom selector que combina el uso
+// de algunos selectores de adapters que querramos utilizar
 export const selectAuthorBooks = (author: string) =>
   createSelector(
     [
