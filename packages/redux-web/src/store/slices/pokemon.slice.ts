@@ -21,6 +21,8 @@ const pokemonSlice = createSlice({
   },
 });
 
+// Exportando el reducer para agregarlo al configureStore
 export default pokemonSlice.reducer;
+
 // Action creators are generated for each case reducer function
 export const { pokemonAdded, pokemonsReceived, remove } = pokemonSlice.actions;

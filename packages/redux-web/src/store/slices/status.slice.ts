@@ -11,7 +11,9 @@ const statusSlice = createSlice({
   },
 });
 
+// Exportando el reducer para agregarlo al configureStore
 export default statusSlice.reducer;
+
 // Action creators are generated for each case reducer function
 export const { setBusy } = statusSlice.actions;
 
@@ -19,6 +21,7 @@ export const { setBusy } = statusSlice.actions;
 export const isBusy = (state: RootState) =>
   state.busy.status === StatusTypes.loading;
 
+// Custom functions
 export const changeStatusAsync = (status: StatusTypes) => (dispatch: any) => {
   setTimeout(() => {
     dispatch(setBusy(status));

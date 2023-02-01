@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { addSuperBookThunk } from "../../thunks/books.thunks";
 import { booksAdapter } from "../adapters/book.adapters";
 import { Book } from "../interfaces/book.interfaces";
 
@@ -25,8 +26,22 @@ const booksSlice = createSlice({
       booksAdapter.setAll(state, action.payload.books);
     },
   },
+  extraReducers: (builder) => {
+    // Add reducers for additional action types here, and handle loading state as needed
+    builder.addCase(addSuperBookThunk.fulfilled, (state, action) => {
+      console.log("addSuperBookThunk.fulfilled:result:payload", action.payload);
+      // Add the super book result to the state array
+      // state.entities.push(action.payload)
+    });
+
+    builder.addCase(addSuperBookThunk.rejected, (state, action) => {
+      console.log("addSuperBookThunk.rejected:error:payload", action.payload);
+      // Add super book fallo, hacer algo!
+    });
+  },
 });
 
+// Exportando el reducer para agregarlo al configureStore
 export default booksSlice.reducer;
 
 // Action creators are generated for each case reducer function
@@ -42,3 +57,10 @@ export const {
   addOne,
   updateOne,
 } = booksSlice.actions;
+
+// Custom functions
+export const addSuperBookAsync = (book: Book) => (dispatch: any) => {
+  setTimeout(() => {
+    dispatch(addSuperBookThunk(book));
+  }, 3500);
+};
